@@ -5,6 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cartão de Visitas</title>
   <style>
+    :root {
+      --modo: light;
+    }
+
+    body[data-theme="light"] {
+      background-color: #ffffff;
+      color: #333;
+    }
+
+    body[data-theme="light"] .card {
+      background-color: #ffe6f0;
+    }
+
+    body[data-theme="dark"] {
+      background-color: #000000;
+      color: #f0f0f0;
+    }
+
+    body[data-theme="dark"] .card {
+      background-color: #001f3f;
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -61,24 +83,6 @@
       font-size: 16px;
     }
 
-    .light-mode {
-      background-color: #ffffff;
-      color: #333;
-    }
-
-    .light-mode .card {
-      background-color: #ffe6f0;
-    }
-
-    .dark-mode {
-      background-color: #000000;
-      color: #f0f0f0;
-    }
-
-    .dark-mode .card {
-      background-color: #001f3f;
-    }
-
     .toggle-btn {
       position: absolute;
       top: 20px;
@@ -90,32 +94,13 @@
       border-radius: 5px;
       cursor: pointer;
     }
-
-    input[type="checkbox"] {
-      appearance: auto;
-      position: absolute;
-      top: 25px;
-      right: 130px;
-      width: 20px;
-      height: 20px;
-      cursor: pointer;
-    }
-
-    /* Alternância por checkbox */
-    #botaoT:checked ~ .container {
-      background-color: #000000;
-      color: #f0f0f0;
-    }
-
-    #botaoT:checked ~ .container .card {
-      background-color: #001f3f;
-    }
   </style>
 </head>
-<body class="light-mode">
-  <input type="checkbox" id="botaoT" onclick="
-    document.body.className = document.getElementById('botaoT').checked ? 'dark-mode' : 'light-mode';">
-  <label for="botaoT" class="toggle-btn">Alternar modo</label>
+<body data-theme="light">
+  <button class="toggle-btn" onclick="
+    const current = document.body.getAttribute('data-theme');
+    document.body.setAttribute('data-theme', current === 'light' ? 'dark' : 'light');
+  ">Alternar modo</button>
 
   <div class="container">
     <div class="card">

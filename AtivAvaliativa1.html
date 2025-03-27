@@ -9,21 +9,21 @@
       --modo: light;
     }
 
-    body[data-theme="light"] {
+    body[modo-tela="light"] {
       background-color: #ffffff;
       color: #333;
     }
 
-    body[data-theme="light"] .card {
+    body[modo-tela="light"] .cartao {
       background-color: #ffe6f0;
     }
 
-    body[data-theme="dark"] {
+    body[modo-tela="dark"] {
       background-color: #000000;
       color: #f0f0f0;
     }
 
-    body[data-theme="dark"] .card {
+    body[modo-tela="dark"] .cartao {
       background-color: #001f3f;
     }
 
@@ -38,7 +38,7 @@
       position: relative;
     }
 
-    .card {
+    .cartao {
       width: 640px;
       height: 360px;
       display: flex;
@@ -47,12 +47,12 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
-    .photo {
+    .foto {
       width: 40%;
       background: url('IMG_2476.jpg') center/cover no-repeat;
     }
 
-    .info {
+    .conteudo {
       width: 60%;
       padding: 20px;
       display: flex;
@@ -61,11 +61,11 @@
       gap: 15px;
     }
 
-    .info h2 {
+    .conteudo h2 {
       margin: 0;
     }
 
-    .info a {
+    .conteudo a {
       text-decoration: underline;
       color: inherit;
       display: flex;
@@ -74,7 +74,7 @@
       font-size: 16px;
     }
 
-    .info p {
+    .conteudo p {
       text-decoration: none;
       color: inherit;
       display: flex;
@@ -83,7 +83,7 @@
       font-size: 16px;
     }
 
-    .toggle-btn {
+    .botao {
       position: absolute;
       top: 20px;
       right: 20px;
@@ -96,16 +96,16 @@
     }
   </style>
 </head>
-<body data-theme="light">
-  <button class="toggle-btn" onclick="
-    const current = document.body.getAttribute('data-theme');
-    document.body.setAttribute('data-theme', current === 'light' ? 'dark' : 'light');
+<body modo-tela="light">
+  <button class="botao" onclick="
+    const current = document.body.getAttribute('modo-tela');
+    document.body.setAttribute('modo-tela', current === 'light' ? 'dark' : 'light');
   ">Alternar modo</button>
 
   <div class="container">
-    <div class="card">
-      <div class="photo"></div>
-      <div class="info">
+    <div class="cartao">
+      <div class="foto"></div>
+      <div class="conteudo">
         <h2>Isadora Castelo</h2>
         <p>📧 Isadora.castelo.pf@gmail.com</p>
         <a href="https://www.linkedin.com/feed/?trk=guest_homepage-basic_nav-header-signin">

@@ -5,28 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cartão de Visitas</title>
   <style>
-    :root {
-      --modo: light;
-    }
-
-    body[modo-tela="light"] {
-      background-color: #ffffff;
-      color: #333;
-    }
-
-    body[modo-tela="light"] .cartao {
-      background-color: #ffe6f0;
-    }
-
-    body[modo-tela="dark"] {
-      background-color: #000000;
-      color: #f0f0f0;
-    }
-
-    body[modo-tela="dark"] .cartao {
-      background-color: #001f3f;
-    }
-
     body {
       margin: 0;
       padding: 0;
@@ -36,6 +14,24 @@
       align-items: center;
       justify-content: center;
       position: relative;
+    }
+
+    body.light {
+      background-color: #ffffff;
+      color: #333;
+    }
+
+    body.light .cartao {
+      background-color: #ffe6f0;
+    }
+
+    body.dark {
+      background-color: #000000;
+      color: #f0f0f0;
+    }
+
+    body.dark .cartao {
+      background-color: #001f3f;
     }
 
     .cartao {
@@ -94,13 +90,26 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
+    #alterar {
+      display: none;
+    }
+
+    #alterar:checked ~ .container {
+      --tema: dark;
+    }
+
+    #alterar:checked ~ body {
+      background-color: #000000;
+      color: #f0f0f0;
+    }
   </style>
 </head>
-<body modo-tela="light">
-  <button class="botao" onclick="
-    const current = document.body.getAttribute('modo-tela');
-    document.body.setAttribute('modo-tela', current === 'light' ? 'dark' : 'light');
-  ">Alternar modo</button>
+<body class="light">
+  <input type="checkbox" id="alterar" onclick="
+    document.body.className = document.body.className === 'light' ? 'dark' : 'light';
+  ">
+  <label for="alterar" class="botao">Alternar modo</label>
 
   <div class="container">
     <div class="cartao">
